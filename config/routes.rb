@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  devise_for :models
   root 'static_pages#index'
-  get 'contact' => 'static_pages#contact'
+  get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
 
   # The priority is based upon order of creation: first created -> highest priority.
