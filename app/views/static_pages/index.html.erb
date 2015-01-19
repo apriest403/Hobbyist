@@ -1,5 +1,16 @@
-<div class="jumbotron" id="index">
-    <h2>Try new things | Meet cool people</h2>
-    <h1>Hobbyist</h1>
-    <button class="btn btn-default">Enter</button>
-</div>
+<% if current_user %>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <h3>Hello, <%= current_user.name %>!</h3>
+        <video autoplay loop id="index-video">
+            <source src="http://zippy.gfycat.com/ElatedEquatorialDrake.webm" type="video/webm">
+        </video>
+    </div>
+<% else %>
+    <div class="jumbotron" id="index">
+        <h2>Try new things</h2>
+        <h2>Meet cool people</h2>
+        <h1>Hobbyist</h1>
+        <%= link_to "Sign Up", new_user_registration_path,class: "btn btn-default" %>
+    </div>
+<% end %>

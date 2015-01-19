@@ -3,6 +3,7 @@
     background-size: cover;
     text-align: center;
     height: 100vh;
+
     h1 {
         color: white;
         font-weight: bold;
@@ -11,4 +12,8 @@
         color: white;
         font-weight: bold;
     }
+}
+
+.notice, .alert {
+    display: none;
 }

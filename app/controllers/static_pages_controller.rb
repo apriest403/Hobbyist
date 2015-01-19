@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   def index
   end
   
-  def contact
+  def help
   end
   
   def about
