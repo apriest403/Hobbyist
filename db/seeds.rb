@@ -7,3 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(name: "Harry Potter", email: "harry.potter@hogwarts.edu", password: "password", password_confirmation: "password")
+
+Hobby.create!(name: "Skiing", description: "Wear chopsticks on your feet and go down a snowy mountain")
+Hobby.create!(name: "Programming", description: "Become the ultimate neckbeard!" )
+Hobby.create!(name: "Skateboarding", description: "Kickflips and pop-shove its")
+Hobby.create!(name: "Cooking", description: "IT'S FUCKING RAW")

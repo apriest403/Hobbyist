@@ -1,7 +1,8 @@
-<% if current_user %>
+<% if user_signed_in? %>
     <div class="container">
         <h1>Dashboard</h1>
         <h3>Hello, <%= current_user.name %>!</h3>
+        <p>Explore some <%= link_to "Hobbies", hobbies_path %></p>
         <video autoplay loop id="index-video">
             <source src="http://zippy.gfycat.com/ElatedEquatorialDrake.webm" type="video/webm">
         </video>

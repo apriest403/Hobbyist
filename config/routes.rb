@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :hobbies
+
   devise_for :users
-  devise_for :models
   root 'static_pages#index'
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
