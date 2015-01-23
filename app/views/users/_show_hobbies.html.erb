@@ -1,0 +1,9 @@
+<% provide(:title, @title) %>
+<div class="col-md-8">
+    <% if @hobbies.any? %>
+        <ul class="hobby-list">
+            <%= render @hobbies %>
+        </ul>
+        <%= will_paginate %>
+    <% end %>
+</div>
