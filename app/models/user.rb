@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many :user_hobbies
   has_many :hobbies, :through => :user_hobbies
   
+  def has_hobby?(some_hobby)
+    hobbies.include?(some_hobby)
+  end
+  
 end
