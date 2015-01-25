@@ -1,29 +1,31 @@
 <% provide(:title, "Hobbies") %>
-<div class="container">  
-  <p id="notice"><%= notice %></p>
-
-  <h1>Hobbies</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+<div class="container">
+<h1>Hobbies</h1>
+  <div class="media">
+    <div class="media-body">
+      
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Hobby</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @hobbies.each do |hobby| %>
+            <tr>
+              <td><%= link_to hobby.name, hobby %></td>
+              <!--<td><% link_to 'Show', hobby %></td>-->
+              <!--<td><% link_to 'Edit', edit_hobby_path(hobby) %></td>-->
+              <!--<td><% link_to 'Destroy', hobby, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
   
-    <tbody>
-      <% @hobbies.each do |hobby| %>
-        <tr>
-          <td><%= link_to hobby.name, hobby %></td>
-          <!--<td><% link_to 'Show', hobby %></td>-->
-          <!--<td><% link_to 'Edit', edit_hobby_path(hobby) %></td>-->
-          <!--<td><% link_to 'Destroy', hobby, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-
-  <%= link_to 'New Hobby', new_hobby_path, class: "btn btn-default" %>
+      <p>Can't find what you're looking for? Start a <%= link_to 'new hobby.', new_hobby_path %>
+  
+    </div>
+  </div>
 </div>

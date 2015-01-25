@@ -1,3 +1,10 @@
+// Mixins, variables, etc.
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 #index {
     background-image: url("https://ununsplash.imgix.net/photo-1416424500327-a57ace7358b8?q=75&fm=jpg&s=3966cc55b430efa05255500b936ea250");
     background-size: cover;
@@ -12,8 +19,4 @@
         color: white;
         font-weight: bold;
     }
-}
-
-.notice, .alert {
-    display: none;
 }
