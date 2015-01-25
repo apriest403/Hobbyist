@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+    <div class="container">
+        <% if current_user.has_hobby?(@hobby) %>
+            <%= render 'unfollow' %>
+        <% else %>
+            <%= render 'follow' %>
+        <% end %>
+    </div>
+<% end %>

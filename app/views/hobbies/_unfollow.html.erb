@@ -1,0 +1,6 @@
+<%= form_for(current_user.user_hobbies.find_by(hobby_id: @hobby.id), 
+                html: {method: :delete}) do |f| %>
+
+<div><%= hidden_field_tag :hobby_id, @hobby.id %></div>
+<%= f.submit "Unfollow", class: "btn btn-default" %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_for(current_user.user_hobbies.build(hobby_id: @hobby.id)) do |f| %>
+
+<div><%= hidden_field_tag :hobby_id, @hobby.id %></div>
+<%= f.submit "Follow", class: "btn btn-default" %>
+<% end %>

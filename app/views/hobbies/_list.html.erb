@@ -1,0 +1,13 @@
+<div class="container">
+    <h3>Hobbies</h3>
+    <% if @user.hobbies.any? %>
+        <ul>
+            <%= render @hobbies %>
+        </ul>
+        <%= will_paginate @hobbies %>
+        <p>Find more <%= link_to "hobbies!", hobbies_path %></p>
+    <% else %>
+        <p>You're not following any hobbies, check some 
+        <%= link_to "out!", hobbies_path %></p>
+    <% end %>
+</div>
