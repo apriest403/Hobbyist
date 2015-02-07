@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   
   has_many :user_hobbies, dependent: :destroy
   has_many :hobbies, :through => :user_hobbies
+  has_many :posts, dependent: :destroy
   
   def follow(some_hobby)
     user_hobbies.create(hobby_id: some_hobby.id)

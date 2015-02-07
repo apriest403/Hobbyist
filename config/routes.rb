@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :hobbies
   resources :user_hobbies,    only: [:create, :destroy]
+  resources :posts
   
   resources :users do
     member do
