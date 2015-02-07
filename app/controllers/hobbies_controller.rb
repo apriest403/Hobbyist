@@ -1,4 +1,5 @@
 class HobbiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_hobby, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -10,7 +11,9 @@ class HobbiesController < ApplicationController
 
   def show
     @user = current_user
-    respond_with(@hobby)
+    # respond_with(@hobby)
+    @hobby = Hobby.find(params[:id])
+    @posts = @hobby.posts.all
   end
 
   def new

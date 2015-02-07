@@ -1,0 +1,8 @@
+<div class="container">
+	<% if @post.link.empty? %>
+		<h1><%= post.title %></h1>
+	<% else %>
+		<h1><%= link_to @post.title, @post.link %></h1>
+	<% end %>
+	<p><%= @post.content %></p>
+</div>

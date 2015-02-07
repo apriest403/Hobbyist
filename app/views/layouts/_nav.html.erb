@@ -13,6 +13,8 @@
             <ul class="nav navbar-nav pull-right">
                 <% if user_signed_in? %>
                     <li><%= link_to "Profile", root_path %></li>
+                    <li><%= link_to "Explore", hobbies_path %></li>
+                    <li><%= link_to "Settings", "/users/edit" %></li>
                     <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
                 <% else %>
                     <li><%= link_to "Home", root_path %></li>

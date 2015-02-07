@@ -1,0 +1,8 @@
+<li id="post-<%= post.id %>">
+	<% if post.link == nil %>
+		<%= post.title %>
+	<% else %>
+		<%= link_to post.title, post.link %>
+	<% end %>
+	<%= post.content %>
+</li>

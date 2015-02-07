@@ -1,6 +1,40 @@
 <% provide(:title,"Create a Post") %>
-<h1>Create a Post</h1>
+<div class="container">
+	<h1>Create a Post</h1>
+	<%= form_for(@post) do |f| %>
+		<% if @hobbies.count == 0 %>
 
-<%= form_for(@post) do |f| %>
-    
-<% end %>
+			<p>You need to follow a hobby to submit a post!</p>
+
+		<% else %>
+
+			<div class="field">
+				<%= f.label :title %><br>
+				<%= f.text_field :title %>
+			</div>
+
+			<div class="field">
+				<!-- <label for="post_hobby">Hobby</label><br> -->
+				<%= f.label :hobby_id %><br>
+				<%= f.select(:hobby_id,@hobbies) %>
+		    </div>
+
+		    <div class="field">
+				<%= f.label :link %> <i>(optional)</i><br>
+				<%= f.text_field :link %>
+			</div>
+
+		    <div class="field">
+				<%= f.label :content %><br>
+				<%= f.text_area :content %>
+			</div>
+
+			<div class="actions">
+    			<%= f.submit "Submit", class: "btn btn-default" %>
+  			</div>
+
+		<% end %>
+
+	<% end %>
+
+</div>
