@@ -3,6 +3,14 @@
 		<h1><%= @post.title %></h1>
 	<% else %>
 		<h1><%= link_to @post.title, @post.link %></h1>
+		<p>by <%= link_to @post.user.name, @post.user %></p>
 	<% end %>
-	<p><%= @post.content %></p>
+	<div class="well">
+		<%= @post.content %>
+	</div>
+	<h3>Comments</h3>
+	<ul>
+		<!-- Render comments -->
+	</ul>
+
 </div>
