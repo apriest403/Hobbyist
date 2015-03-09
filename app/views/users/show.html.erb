@@ -1,0 +1,31 @@
+<%= provide(:title,@user.name) %>
+<style type="text/css">
+	.interests {
+		float: left;
+		height: 200px;
+		width: 200px;
+		border: solid 1px gray;
+		background: lightgray;
+		text-align: center;
+	}
+	.interests a {
+		color: white;
+	}
+
+	.interests h3{
+		margin-top:auto;
+		margin-bottom: auto;
+	}
+</style>
+
+<div class="container">
+	<h1><%=@user.name %></h1>
+	<button class="btn btn-default">Add Friend</button>
+	<h3>Interests</h3>
+		<% @user.hobbies.each do |hobby|%>
+			<div class="container">
+				<h3><%=  link_to hobby.name, hobby  %></h3>
+			</div>
+		<% end %>
+
+</div>

@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   resources :hobbies
   resources :user_hobbies,    only: [:create, :destroy]
   resources :posts
+  resources :users,           only: [:show, :index]
   
-  resources :users do
-    member do
-      get :hobbies
-    end
-  end
+  # resources :users do
+  #   member do
+  #     get :hobbies
+  #   end
+  # end
   
-  root 'static_pages#index'
-  get 'help' => 'static_pages#help'
-  get 'about' => 'static_pages#about'
+  root  'static_pages#index'
+  get   'help' => 'static_pages#help'
+  get   'about' => 'static_pages#about'
   
 end
