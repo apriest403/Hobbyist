@@ -1,9 +1,15 @@
 <h3>Hobbies</h3>
 <% if @user.hobbies.any? %>
-    <ul>
-        <%= render @hobbies %>
+	<% @user.hobbies.each do |hobby| %>
+		<div class="interests">
+			<p><%= link_to hobby.name, hobby %></p>
+		</div>
+	<% end %>
+    <!-- ul>
+        <% render @hobbies %>
     </ul>
-    <%= will_paginate @hobbies %>
+    <% will_paginate @hobbies %> -->
+    <div class="clear-float"></div>
     <p>Find more <%= link_to "hobbies!", hobbies_path %></p>
 <% else %>
     <p>You're not following any hobbies. Check some 

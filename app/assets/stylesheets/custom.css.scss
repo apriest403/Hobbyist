@@ -5,6 +5,7 @@
   box-sizing:         border-box;
 }
 
+/*Styling for landing page and home page*/
 #index {
     background-image: url("https://ununsplash.imgix.net/photo-1416424500327-a57ace7358b8?q=75&fm=jpg&s=3966cc55b430efa05255500b936ea250");
     background-size: cover;
@@ -19,4 +20,32 @@
         color: white;
         font-weight: bold;
     }
+}
+
+/*Styling for hobbies*/
+.interests {
+    float: left;
+    height: 200px;
+    width: 200px;
+    border: solid 1px white;
+    background: lightblue;
+    text-align: center;
+    padding: 0;
+    a {
+        color: white;
+        font-style: bold;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    p {
+        font-style: bold;
+        text-transform: uppercase;
+        margin-top: 89px;
+        margin-bottom: auto;
+    }
+}
+
+.clear-float {
+    clear: both;
 }
