@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :hobbies, :through => :user_hobbies
   has_many :posts, dependent: :destroy
   
+  has_many :active_relationships, class_name:   "Relationship",
+                                  foreign_key:  "follower_id",
+                                  dependent:      :destroy
+
   def follow(some_hobby)
     user_hobbies.create(hobby_id: some_hobby.id)
   end

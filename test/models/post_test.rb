@@ -3,8 +3,9 @@ require 'test_helper'
 class PostTest < ActiveSupport::TestCase
 
   def setup
-    @hobby = hobbies(:hobby)
-    @user = users(:user)
+    @hobby = Hobby.create(name: "Baseball", description: "Steroids")
+    @user = User.create(name: "Sam", email: "lol@example.com", password: "password", 
+                    password_confirmation: "password")
     @post = Post.new(       title: "Title", 
                             link: "http://usuck.com",
                             content: "U suck :(", 
