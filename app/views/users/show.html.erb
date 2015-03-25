@@ -4,10 +4,12 @@
 	<h1><%=@user.name %></h1>
 	<button class="btn btn-default">Add Friend</button>
 	<h3>Interests</h3>
-		<% @user.hobbies.each do |hobby|%>
-			<div class="interests">
-				<p><%=  link_to hobby.name, hobby  %></p>
-			</div>
-		<% end %>
+		<% @user.hobbies.each do |hobby| %>
+        <%= link_to hobby do %>
+            <div class="interests">
+                <p><%= hobby.name %></p>
+            </div>
+        <% end %>
+	<% end %>
 
 </div>

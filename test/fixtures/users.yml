@@ -10,8 +10,6 @@
 # two: {}
 # #  column: value
 
-# user:
-# 	name: Draco
-# 	email: draco.malfoy@hogwarts.edu
-# 	password: password
-# 	encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+draco:
+  email: draco.malfoy@hogwarts.edu
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
