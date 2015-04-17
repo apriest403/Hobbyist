@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  link: MyText
-  content: MyString
+winning:
+  title: Winning
+  link: http://winning.com
+  content: Win
   user_id: 1
   hobby_id: 1
 
-two:
-  title: MyString
-  link: MyText
-  content: MyString
+losing:
+  title: Losing
+  link: http://yousuck.sadness
+  content: :(
   user_id: 1
   hobby_id: 1
