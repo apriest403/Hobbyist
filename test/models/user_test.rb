@@ -2,19 +2,28 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
-  def setup
-    @hobby = Hobby.create(name: "Baseball", description: "Steroids")
-    @user = User.create(name: "Sam", email: "lol@example.com", password: "password", 
-                    password_confirmation: "password")
+  test "should follow and unfollow a hobby" do
+    baseball = hobbies(:baseball)
+    draco = users(:draco)
+    harry = users(:harry)
+
+    assert_not draco.has_hobby?(baseball)
+    draco.follow(baseball)
+    assert draco.has_hobby?(baseball)
+    assert baseball.users.include?(draco)
+    draco.unfollow(baseball)
+    assert_not draco.has_hobby?(baseball)
   end
 
-  test "should follow and unfollow a hobby" do
-    assert_not @user.has_hobby?(@hobby)
-    @user.follow(@hobby)
-    assert @user.has_hobby?(@hobby)
-    assert @hobby.users.include?(@user)
-    @user.unfollow(@hobby)
-    assert_not @user.has_hobby?(@hobby)
+  test "should follow and unfollow a user" do 
+    draco = users(:draco)
+    harry = users(:harry)
+
+    assert_not draco.followingUser?(harry)
+    draco.followUser(harry)
+    assert draco.followingUser?(harry)
+    draco.unfollowUser(harry)
+    assert_not draco.followingUser?(harry)
   end
 
 end

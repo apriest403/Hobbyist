@@ -10,18 +10,43 @@ class User < ActiveRecord::Base
   
   has_many :active_relationships, class_name:   "Relationship",
                                   foreign_key:  "follower_id",
-                                  dependent:      :destroy
+                                  dependent:    :destroy
 
+  has_many :passive_relationships, class_name:    "Relationship",
+                                    foreign_key:  "followed_id",
+                                    dependent:    :destroy 
+
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followed, through: :passive_relationships
+
+  # Follows a hobby
   def follow(some_hobby)
     user_hobbies.create(hobby_id: some_hobby.id)
   end
   
+  # Unfollows a hobby
   def unfollow(some_hobby)
     user_hobbies.find_by(hobby_id: some_hobby.id).destroy
   end
   
+  # Returns true if user is following the hobby
   def has_hobby?(some_hobby)
     hobbies.include?(some_hobby)
+  end
+
+  # Follows a user
+  def followUser(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user
+  def unfollowUser(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user
+  def followingUser?(other_user)
+    following.include?(other_user)
   end
   
 end
