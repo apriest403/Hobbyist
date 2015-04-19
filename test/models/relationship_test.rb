@@ -6,7 +6,7 @@ class RelationshipTest < ActiveSupport::TestCase
   # end
 
   def setup
-  	@relationship = relationships(:one)
+  	@relationship = relationships(:three)
   end
 
   test "relationship should be valid" do

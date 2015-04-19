@@ -17,3 +17,11 @@ draco:
 harry:
   email: 'harry.potter@hogwarts.edu'
   encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+hermione:
+  email: 'hermione.granger@hogwarts.edu'
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+ron:
+  email: 'ronald.weasley@hogwarts.edu'
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
