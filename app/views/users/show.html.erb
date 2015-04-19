@@ -1,12 +1,9 @@
 <%= provide(:title,@user.name) %>
 
 <div class="container">
-	<h1><%=@user.name %></h1>
-	<% if current_user.followingUser?(@user) %>
-		<%= render 'unfollow' %>
-	<% else %>
-		<%= render 'follow' %>
-	<% end %>
+	<h1><%=@user.name %>
+	<%= render 'follow_form' %>
+	</h1>
 	<h3>Interests</h3>
 		<% @user.hobbies.each do |hobby| %>
         <%= link_to hobby do %>
