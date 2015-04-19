@@ -2,6 +2,7 @@
     <% provide(:title, "Dashboard") %>
     <div class="container">
         <h1>Dashboard</h1>
+        <%= gravatar_for @user %>
         <h3>Hello, <%= @user.name %>!</h3>
             
         <!-- <video autoplay loop id="index-video">
