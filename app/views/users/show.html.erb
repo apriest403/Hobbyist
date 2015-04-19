@@ -2,7 +2,11 @@
 
 <div class="container">
 	<h1><%=@user.name %></h1>
-	<button class="btn btn-default">Add Friend</button>
+	<% if current_user.followingUser?(@user) %>
+		<%= render 'unfollow' %>
+	<% else %>
+		<%= render 'follow' %>
+	<% end %>
 	<h3>Interests</h3>
 		<% @user.hobbies.each do |hobby| %>
         <%= link_to hobby do %>

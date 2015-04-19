@@ -1,0 +1,17 @@
+<% provide(:title, @title) %>
+<div class="container">
+	<% if @users.any? %>
+
+		<h1><%= @title %></h1>
+			<ul class="users follow">
+				<%= render @users %>
+			</ul>
+			<%= will_paginate %>
+
+	<% else %>
+
+	<h1>No one likes you :(</h1>
+	<p><%= link_to "Find someone that does!", users_path %></p>
+
+	<% end %>
+</div>
