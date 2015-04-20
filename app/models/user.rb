@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
                                     dependent:    :destroy 
 
   has_many :following, through: :active_relationships, source: :followed
-  has_many :followed, through: :passive_relationships
+  has_many :followers, through: :passive_relationships
 
   # Follows a hobby
   def follow(some_hobby)
