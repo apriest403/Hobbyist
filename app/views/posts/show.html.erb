@@ -2,7 +2,7 @@
 	<% if @post.link.empty? %>
 		<h1><%= @post.title %></h1>
 	<% else %>
-		<h1><%= link_to @post.title, @post.link %></h1>
+		<h1><%= link_to @post.title, @post.link.include?("http://") ? @post.link : "http://" + @post.link %></h1>
 		<p>by <%= link_to @post.user.name, @post.user %></p>
 	<% end %>
 	<div class="well">

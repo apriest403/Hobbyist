@@ -8,7 +8,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
 	  @user = users(:harry)
 	end
 
-	test "following page" do
+	test "user following page" do
 		get following_user_path(@user)
 		assert_not @user.following.empty?
 		# assert_match @user.following.count.to_s, response.body
@@ -17,7 +17,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
 		# end
 	end
 
-	test "followers page" do
+	test "user followers page" do
 		get followers_user_path(@user)
 		assert_not @user.followers.empty?
 		# assert_match @user.followers.count.to_s, response.body
