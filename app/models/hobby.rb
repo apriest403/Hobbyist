@@ -1,6 +1,7 @@
 class Hobby < ActiveRecord::Base
-    has_many :user_hobbies
-    has_many :users, :through => :user_hobbies
-    has_many :posts
-    validates :name, presence: true
+  validates :name, presence: true
+
+  has_many :user_hobbies
+  has_many :users, :through => :user_hobbies
+  has_many :posts
 end
