@@ -5,6 +5,8 @@
     <strong><%= @hobby.name %></strong>
   </h1>
   <p>
+    <%= link_to 'Edit', edit_hobby_path(@hobby) if current_user.admin? %></p>
+  <p>
     <%= @hobby.description %>
   </p>
   <%= render 'follow_form'%>
