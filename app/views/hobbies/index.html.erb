@@ -8,10 +8,6 @@
         <thead>
           <tr>
             <th>Hobby</th>
-            <% if current_user.admin? %>
-              <!-- <th>Edit</th>
-              <th>Destroy</th> -->
-            <% end %>
           </tr>
         </thead>
         
@@ -20,10 +16,11 @@
             <tr>
               <td><%= link_to hobby.name, hobby %></td>
               <% if current_user.admin? %>
-                <td><%= link_to 'Edit', edit_hobby_path(hobby), class: "btn btn-primary"%></td>
-                <td><%= link_to 'Destroy', hobby, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <td>
+                <%= link_to 'Edit', edit_hobby_path(hobby), class: "btn btn-primary"%>
+                <%= link_to 'Destroy', hobby, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+              </td>
               <% end %>
-              <td><%= link_to 'Follow', current_user.follow(hobby), class: "btn btn-default" %></td>
             </tr>
           <% end %>
         </tbody>

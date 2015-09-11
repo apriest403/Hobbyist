@@ -1,12 +1,13 @@
 class HobbiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_hobby, only: [:show, :edit, :update, :destroy]
+  before_action :set_hobby,    only: [:show, :edit, :update, :destroy]
+  before_filter :verify_admin, only: [:edit, :update, :destroy]
 
   respond_to :html
 
   def index
     @hobbies = Hobby.all
-    respond_with(@hobbies)
+    # respond_with(@hobbies)
   end
 
   def show
@@ -22,6 +23,7 @@ class HobbiesController < ApplicationController
   end
 
   def edit
+
   end
 
   def create
@@ -47,5 +49,12 @@ class HobbiesController < ApplicationController
 
     def hobby_params
       params.require(:hobby).permit(:name, :description)
+    end
+
+    def verify_admin
+      unless current_user.admin?
+        flash[:danger] = "You can't edit hobbies unless you're an admin"
+        redirect_to root_path
+      end
     end
 end

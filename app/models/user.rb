@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   # Follows a hobby
   def follow(some_hobby)
-    user_hobbies.create(hobby_id: some_hobby.id)
+    user_hobbies.create(user_id: id, hobby_id: some_hobby.id)
   end
   
   # Unfollows a hobby
