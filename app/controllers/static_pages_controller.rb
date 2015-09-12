@@ -1,10 +1,9 @@
 class StaticPagesController < ApplicationController
   def index
     if user_signed_in?
-      @user = current_user
+      @user = current_or_guest_user
       @hobbies = @user.hobbies.paginate(page: params[:page])
     end
-    
   end
   
   def help

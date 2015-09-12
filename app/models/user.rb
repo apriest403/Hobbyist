@@ -48,4 +48,8 @@ class User < ActiveRecord::Base
   def following_user?(other_user)
     following.include?(other_user)
   end
+
+  def is_guest? 
+    current_user && session[:guest_user_id] == current_user.id 
+  end
 end

@@ -1,17 +1,18 @@
 class PostsController < ApplicationController
-before_action :authenticate_user!
+before_action :authenticate_user!, except: [:show]
+# skip_before_filter :verify_authenticity_token, :only => [:is_guest?]
 
   def new
-    @hobbies = current_user.hobbies.all.map do |hobby| 
+    @hobbies = current_user_or_guest.hobbies.all.map do |hobby| 
       [hobby.name, hobby.id]
     end
     
-    @post = current_user.posts.build
+    @post = current_user_or_guest.posts.build
   end
 
   def create
-    @hobbies = current_user.hobbies.all
-    @post = current_user.posts.new(post_params)
+    @hobbies = current_user_or_guest.hobbies.all
+    @post = current_user_or_guest.posts.new(post_params)
 
     if @post.save 
       flash[:success] = "Post successful!"
@@ -27,6 +28,9 @@ before_action :authenticate_user!
   end
 
   private
+  def guest
+
+  end
 
   def post_params
     params.require(:post).permit(:title, :link, :content, :hobby_id)

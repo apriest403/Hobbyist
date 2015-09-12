@@ -1,5 +1,5 @@
 class HobbiesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_hobby,    only: [:show, :edit, :update, :destroy]
   before_filter :verify_admin, only: [:edit, :update, :destroy]
 
@@ -11,7 +11,7 @@ class HobbiesController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = current_or_guest_user
     # respond_with(@hobby)
     @hobby = Hobby.find(params[:id])
     @posts = @hobby.posts.all
@@ -43,6 +43,10 @@ class HobbiesController < ApplicationController
   end
 
   private
+    def is_guest
+      current_user && session[:guest_user_id] == current_user.id 
+    end
+
     def set_hobby
       @hobby = Hobby.find(params[:id])
     end
@@ -52,7 +56,7 @@ class HobbiesController < ApplicationController
     end
 
     def verify_admin
-      unless current_user.admin?
+      unless current_or_guest_user.admin?
         flash[:danger] = "You can't edit hobbies unless you're an admin"
         redirect_to root_path
       end
