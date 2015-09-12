@@ -34,4 +34,4 @@ Hobby.create!(name: "Skateboarding",
 Hobby.create!(name: "Cooking", 
               description: "IT'S FUCKING RAW")
 
-Post.create!(user_id: harry.id, hobby_id: skiing.id, title: "Urban Skiing", content: "Skiing Salt Lake City", link: "https://www.youtube.com/watch?v=G5dOB3VSyC8")
+Post.create!(user_id: harry.id, hobby_id: skiing.id, title: "Urban Skiing", content: "Urban skiing in Nelson, British Columbia", link: "https://www.youtube.com/watch?v=ua26CixwnKs")
