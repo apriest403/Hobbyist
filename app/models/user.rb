@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships
 
+  has_many :comments
+
   # Follows a hobby
   def follow(some_hobby)
     user_hobbies.create(user_id: id, hobby_id: some_hobby.id)

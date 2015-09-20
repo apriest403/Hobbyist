@@ -8,6 +8,7 @@ before_action :authenticate_user!, except: [:show]
     end
     
     @post = current_or_guest_user.posts.build
+
   end
 
   def create
@@ -24,7 +25,8 @@ before_action :authenticate_user!, except: [:show]
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:comments).find(params[:id])
+    @all_comments = @post.comments_by_parent_id
   end
 
   private

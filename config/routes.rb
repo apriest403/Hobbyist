@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  get 'comments/show'
+
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources :hobbies
   resources :user_hobbies,    only: [:create, :destroy]
-  resources :posts
+
+  resources :posts do
+    resources :comments, only: :new
+  end
+
   resources :users,           only: [:show, :index]
-  resources :relationships,    only: [:create, :destroy]
+  resources :relationships,   only: [:create, :destroy]
+
+  resources :comments,        only: [:show, :create, :destroy]
   
   resources :users do
     member do
@@ -13,7 +21,8 @@ Rails.application.routes.draw do
   end
   
   root  'static_pages#index'
-  get   'help' => 'static_pages#help'
+
+  get   'help'  => 'static_pages#help'
   get   'about' => 'static_pages#about'
   
 end

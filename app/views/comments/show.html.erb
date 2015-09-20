@@ -1,0 +1,34 @@
+<div class="container">
+  <h4>Comment by 
+    <%= link_to @comment.user.name, user_url(@comment.user) %>
+    made <%= time_ago_in_words(@comment.created_at) %> ago
+  </h4>
+  <p>
+    <%= @comment.content %>
+  </p>
+  <hr>
+  <h4>Add Comment</h4>
+  <form action="<%= comments_path %>" method="post">
+    <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+    <input type="hidden"
+           name="comment[post_id]"
+           value="<%= @comment.post_id %>">
+    <input type="hidden"
+           name="comment[parent_comment_id]"
+           value="<%= @comment.id %>">
+           
+    <textarea rows="4" 
+              cols="20"
+              name="comment[content]"
+              placeholder="Write comment here"
+              class="form-control"></textarea><br>
+
+    <input type="submit"
+           value="Add Comment"
+           class="btn btn-default">
+  </form><br>
+  <%= link_to "Back to #{@comment.post.title}", post_url(@comment.post_id) %>
+</div>

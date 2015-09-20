@@ -8,9 +8,14 @@
 	<div class="well">
 		<%= @post.content %>
 	</div>
-	<h3>Comments</h3>
-	<ul>
-		<!-- Render comments -->
-	</ul>
 
+	<%= render 'comments/form' %>
+
+	<h3>Comments [<%= @all_comments.count %>]</h3>
+	
+		<% @all_comments[nil].each do |comment|%>
+    	<%= render 'comments/comment', parent_comment: comment %>
+  	<% end%>
+
+	
 </div>

@@ -1,0 +1,26 @@
+<%= %>
+<%= %>
+<%= %>
+<%= %>
+
+<h4>Add Comment</h4>
+<form action="<%= comments_path %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <input type="hidden"
+         name="comment[post_id]"
+         value="<%= params[:id] %>">
+         
+  <textarea rows="4" 
+            cols="20"
+            name="comment[content]"
+            placeholder="Write comment here"
+            class="form-control"></textarea><br>
+
+  <input type="submit"
+         value="Add Comment"
+         class="btn btn-default">
+</form>
+
