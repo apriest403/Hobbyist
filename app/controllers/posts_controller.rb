@@ -26,6 +26,7 @@ before_action :authenticate_user!, except: [:show]
 
   def show
     @post = Post.includes(:comments).find(params[:id])
+    @comment = Comment.new
     @all_comments = @post.comments_by_parent_id
   end
 

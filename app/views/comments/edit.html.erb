@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Edit Comment</h1>
+  <form action="<%= comment_path(@comment) %>" method="post">
+    <input type="hidden"
+           name="_method"
+           value="patch">
+
+    <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+
+    <input type="hidden"
+           name="comment[post_id]"
+           value="<%= params[:id] %>">
+           
+    <textarea rows="4" 
+              cols="20"
+              name="comment[content]"
+              placeholder="Write comment here"
+              class="form-control"><%= @comment.content %></textarea><br>
+
+    <input type="submit"
+           value="Edit Comment"
+           class="btn btn-default">
+  </form>
+  <br>
+  <%= link_to "Back to '#{@comment.post.title}'", 
+        post_url(@comment.post_id) %>
+</div>

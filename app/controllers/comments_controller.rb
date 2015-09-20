@@ -4,9 +4,20 @@ class CommentsController < ApplicationController
     render :show
   end
 
-  def new
-    @comment = Comment.new
-    render :new
+  def edit
+    @comment = Comment.includes(:post).find(params[:id])
+    render :edit
+  end
+
+  def update 
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      flash[:success] = "Successfully edited comment!"
+      redirect_to post_url(@comment.post_id)
+    else
+      @comment = Comment.find(params[:id])
+      render :edit
+    end
   end
 
   def create

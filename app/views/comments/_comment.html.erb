@@ -10,7 +10,18 @@
 <p>
   <%= parent_comment.content %>
   <br>
-  <%= link_to "See Comment", comment_url(parent_comment) %>
+  <%= link_to "See Comment", comment_url(parent_comment) %> 
+  <% if user_owns?(parent_comment) %>
+    | 
+    <%= link_to "Edit", edit_comment_url(parent_comment) %>
+    | 
+    <%= link_to "Delete", 
+            comment_url(parent_comment), 
+            method: :delete,
+            data: {
+              confirm: "Are you sure?"
+            } %>
+  <% end %>
 </p>
 <ul>
   <% @all_comments[parent_comment.id].each do |comment|%>

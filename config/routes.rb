@@ -3,16 +3,16 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :hobbies
-  resources :user_hobbies,    only: [:create, :destroy]
+  resources :user_hobbies, only: [:create, :destroy]
 
   resources :posts do
     resources :comments, only: :new
   end
 
-  resources :users,           only: [:show, :index]
-  resources :relationships,   only: [:create, :destroy]
+  resources :users, only: [:show, :index]
+  resources :relationships, only: [:create, :destroy]
 
-  resources :comments,        only: [:show, :create, :destroy]
+  resources :comments, only: [:show, :create, :destroy, :edit, :update]
   
   resources :users do
     member do

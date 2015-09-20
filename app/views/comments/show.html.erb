@@ -4,6 +4,18 @@
     made <%= time_ago_in_words(@comment.created_at) %> ago
   </h4>
   <p>
+    <% if user_owns?(@comment) %>
+      <%= link_to "Edit", edit_comment_url(@comment) %>
+      | 
+      <%= link_to "Delete", 
+            comment_url(@comment), 
+            method: :delete,
+            data: {
+              confirm: "Are you sure?"
+            } %>
+    <% end %>
+  </p>
+  <p>
     <%= @comment.content %>
   </p>
   <hr>
@@ -30,5 +42,5 @@
            value="Add Comment"
            class="btn btn-default">
   </form><br>
-  <%= link_to "Back to #{@comment.post.title}", post_url(@comment.post_id) %>
+  <%= link_to "Back to '#{@comment.post.title}'", post_url(@comment.post_id) %>
 </div>
