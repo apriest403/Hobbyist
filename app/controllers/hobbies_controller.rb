@@ -7,13 +7,11 @@ class HobbiesController < ApplicationController
 
   def index
     @hobbies = Hobby.all
-    # respond_with(@hobbies)
   end
 
   def show
     @user = current_or_guest_user
-    # respond_with(@hobby)
-    @hobby = Hobby.find(params[:id])
+    @hobby = Hobby.includes(:posts).find(params[:id])
     @posts = @hobby.posts.all
   end
 

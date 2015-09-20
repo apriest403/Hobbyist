@@ -3,7 +3,7 @@
 	<% @user.hobbies.each do |hobby| %>
         <%= link_to hobby do %>
             <div class="interests">
-                <p><%= hobby.name %></p>
+                <p><strong><%= hobby.name %></strong></p>
             </div>
         <% end %>
 	<% end %>

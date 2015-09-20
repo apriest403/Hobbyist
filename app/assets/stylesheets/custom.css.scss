@@ -1,3 +1,6 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 // Mixins, variables, etc.
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -44,8 +47,13 @@
         text-transform: uppercase;
         margin-top: 89px;
         margin-bottom: auto;
+
     }
 }
+.interests:hover {
+  background: #5fa7bf;
+}
+
 
 .clear-float {
     clear: both;

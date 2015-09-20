@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!, except: [:show]
-# skip_before_filter :verify_authenticity_token, :only => [:is_guest?]
 
   def new
     @hobbies = current_or_guest_user.hobbies.all.map do |hobby| 
@@ -25,8 +24,7 @@ before_action :authenticate_user!, except: [:show]
   end
 
   def show
-    @post = Post.includes(:comments).find(params[:id])
-    @comment = Comment.new
+    @post = Post.find(params[:id])
     @all_comments = @post.comments_by_parent_id
   end
 
