@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Edit Post</h1>
+  <form action="<%= post_url(@post) %>" method="post">
+    <input type="hidden"
+           name="_method"
+           value="patch">
+
+    <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+    <label for="post_title">Title</label><br>
+    <input type="text"
+           name="post[title]"
+           value="<%= @post.title %>"
+           class="form-control"><br>
+
+    <label for="post_title">Link <em>(optional)</em></label><br>
+    <input type="text"
+           name="post[link]"
+           value="<%= @post.link %>"
+           class="form-control"><br>
+
+    <label for="post_title">Content</label><br>
+    <textarea name="post[content"
+              rows="5"
+              class="form-control"><%= @post.content %></textarea><br>
+
+    <input type="submit"
+           value="Edit Post"
+           class="btn btn-default">
+  </form>
+  <br>
+  <%= link_to "Back to '#{@post.title}'", post_url(@post) %>
+</div>

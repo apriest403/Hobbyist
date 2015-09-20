@@ -7,7 +7,6 @@ before_action :authenticate_user!, except: [:show]
     end
     
     @post = current_or_guest_user.posts.build
-
   end
 
   def create
@@ -16,16 +15,38 @@ before_action :authenticate_user!, except: [:show]
 
     if @post.save 
       flash[:success] = "Post successful!"
-      redirect_to hobbies_path
+      redirect_to post_url(@post)
     else
-      flash[:danger] = "Try again!"
-      redirect_to hobbies_path
+      flash[:danger] = @post.errors.full_messages
+      redirect_to new_post_url
     end
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:user).find(params[:id])
     @all_comments = @post.comments_by_parent_id
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:success] = "Post successfully updated!"
+      redirect_to post_url(@post)
+    else
+      flash[:danger] = @post.errors.full_messages
+      render :edit
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to hobby_url(@post.hobby_id)
   end
 
   private

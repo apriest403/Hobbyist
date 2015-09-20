@@ -1,10 +1,25 @@
 <div class="container">
-	<% if @post.link.empty? %>
-		<h1><%= @post.title %></h1>
-	<% else %>
-		<h1><%= link_to @post.title, @post.link.include?("http://") ? @post.link : "http://" + @post.link %></h1>
-		<p>by <%= link_to @post.user.name, @post.user %></p>
-	<% end %>
+	<h1>
+		<% if @post.link.empty? %>
+			<%= @post.title %>
+		<% else %>
+			<%= link_to @post.title, append_http(@post.link) %>
+		<% end %>
+	</h1>
+	<p>
+		by <%= link_to @post.user.name, @post.user %>
+		submitted <%= time_ago_in_words(@post.created_at) %> ago 
+
+		<% if owns_post?(@post) %>
+			| 
+			<%= link_to "Edit", edit_post_url(@post) %>
+			|
+			<%= link_to "Delete", post_url(@post), method: :delete,
+																						 data: 
+																						 	{ confirm: "Are you sure"} %>
+		<% end%>
+	</p>
+
 	<div class="well">
 		<%= @post.content %>
 	</div>
