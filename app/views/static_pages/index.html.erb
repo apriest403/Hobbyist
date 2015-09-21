@@ -1,21 +1,32 @@
 <% if user_signed_in? %>
-    <% provide(:title, "Dashboard") %>
-    <div class="container">
-        <h1>Dashboard</h1>
-        <%= gravatar_for @user %>
-        <h3>Hello, <%= @user.name %>!</h3>
-            
-        <!-- <video autoplay loop id="index-video">
-            <source src="http://zippy.gfycat.com/ElatedEquatorialDrake.webm" type="video/webm">
-        </video> -->
-        <%= render 'shared/stats' %>
-        <%= render 'hobbies/list' %>
-    </div>
+  <% provide(:title, "Dashboard") %>
+  <div class="container">
+      <h1>Dashboard</h1>
+      <%= gravatar_for @user %>
+      <h3>Hello, <%= @user.name %>!</h3>
+          
+<!--       <video autoplay loop id="index-video" poster="vid-first-frame.jpg">
+          <source src="http://zippy.gfycat.com/ElatedEquatorialDrake.webm" type="video/webm">
+      </video> -->
+      <%= render 'shared/stats' %>
+      <%= render 'hobbies/list' %>
+  </div>
 <% else %>
-    <div class="jumbotron" id="index">
-        <h2>Try new things</h2>
-        <h2>Meet cool people</h2>
-        <h1>Hobbyist</h1>
-        <%= link_to "Sign Up", new_user_registration_path,class: "btn btn-default" %>
-    </div>
+<!--   <video autoplay class="index-video" loop id="index">
+    <source src="http://zippy.gfycat.com/ElatedEquatorialDrake.webm" type="video/webm">
+  </video> -->
+ <!--  <video autoplay class="index-video" loop id="index">
+    <source src="http://zippy.gfycat.com/RapidHelplessAruanas.webm" type="video/webm">
+  </video> -->
+  <video autoplay class="index-video" loop id="index">
+    <source src="http://zippy.gfycat.com/CompletePowerlessAustralianshelduck.webm" type="video/webm">
+  </video>
+  <div id="index">
+
+<!--     <h2>Try new things</h2>
+    <h2>Meet cool people</h2> -->
+    <h1>Hobbyist</h1>
+    <h3>Try new things</h3><h3>Meet cool people</h3>
+    <%= link_to "Enter", new_user_registration_path,class: "btn btn-default" %>
+  </div>
 <% end %>
