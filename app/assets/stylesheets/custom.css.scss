@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: Consolas, Helvetica;
+  font-family: 'Varela Round', Ubuntu, Consolas, Helvetica;
 }
 
 /* Nav bar styling*/
@@ -24,6 +24,24 @@ body {
   text-align: center;
 }
 
+footer {
+  text-align: center;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid lightgray;
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
 #index {
 
   /*background-image: url("https://ununsplash.imgix.net/photo-1416424500327-a57ace7358b8?q=75&fm=jpg&s=3966cc55b430efa05255500b936ea250");*/
@@ -36,7 +54,7 @@ body {
     text-shadow: 1px 1px 2px black; 
     color: white;
     font-weight: bold;
-    font-family: Lobster, Helvetica;
+    font-family: Lobster, 'Varela Round', Helvetica;
     font-size: 5em;
   }
   h2 {
