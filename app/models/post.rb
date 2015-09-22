@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  link       :text
+#  content    :string
+#  user_id    :integer
+#  hobby_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Post < ActiveRecord::Base
   validates :user_id,   presence: true
   validates :hobby_id,  presence: true
