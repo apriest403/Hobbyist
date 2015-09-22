@@ -19,6 +19,11 @@
 																						 	{ confirm: "Are you sure"} %>
 		<% end%>
 	</p>
+	<p>
+	  Score: <%= @post.score %> |
+	  <%= link_to "upvote", upvote_post_url(@post), method: :post %> |
+	  <%= link_to "downvote", downvote_post_url(@post), method: :post %>
+	</p>
 
 	<div class="well">
 		<%= @post.content %>

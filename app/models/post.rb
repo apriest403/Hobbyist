@@ -21,8 +21,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :hobby
-
   has_many   :comments
+  has_many   :votes, as: :votable, dependent: :destroy
 
   def comments_by_parent_id
     comment_layers = Hash.new { |h, k| h[k] = [] }
@@ -30,5 +30,10 @@ class Post < ActiveRecord::Base
       comment_layers[comment.parent_comment_id] << comment
     end
     comment_layers
+  end
+
+  def score
+    # votes = Vote.where(votable_type: "Post", votable_id: id)
+    votes.inject(0) {|accum, elem| accum += elem.value }
   end
 end

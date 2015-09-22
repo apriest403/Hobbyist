@@ -1,21 +1,23 @@
 <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Posts</th>
-      </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Posts</th>
+    </tr>
+  </thead>
 
-	<tbody>
-		<% if @posts.count == 0 %>
-			<td>There are no posts to show</td>
-		<% else %>
-          	<% @posts.each do |post| %>
-            <tr>
-            	<td><%= link_to post.title, post_path(post.id) %></td>
-            </tr>
-        	<% end %>
-        <% end %>
-    </tbody>
+  <tbody>
+	<% if @posts.count == 0 %>
+		<td>There are no posts to show</td>
+	<% else %>
+  	<% @posts.each do |post| %>
+      <tr>
+        <td>
+          ( <%= post.score %> ) <%= link_to post.title, post_path(post.id) %>
+        </td>
+      </tr>
+  	<% end %>
+  <% end %>
+  </tbody>
 </table>
 
 <p>Submit a new <%= link_to "post", new_post_path %></p>

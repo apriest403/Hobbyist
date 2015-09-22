@@ -11,7 +11,7 @@ class HobbiesController < ApplicationController
 
   def show
     @user = current_or_guest_user
-    @hobby = Hobby.includes(:posts).find(params[:id])
+    @hobby = Hobby.includes(:posts, posts: :votes).find(params[:id])
     @posts = @hobby.posts.all
   end
 

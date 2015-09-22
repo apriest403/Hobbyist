@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: :new
+    member do
+      post :upvote
+      post :downvote
+    end
   end
 
   resources :users, only: [:show, :index]
