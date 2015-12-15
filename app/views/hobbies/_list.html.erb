@@ -2,7 +2,7 @@
 <% if @user.hobbies.any? %>
 	<% @user.hobbies.each do |hobby| %>
         <%= link_to hobby do %>
-            <div class="interests">
+            <div id="interests" class="interests">
                 <p><strong><%= hobby.name %></strong></p>
             </div>
         <% end %>
