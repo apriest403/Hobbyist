@@ -28,5 +28,16 @@ Rails.application.routes.draw do
 
   get   'help'  => 'static_pages#help'
   get   'about' => 'static_pages#about'
+
+  namespace :api do
+    resources :hobbies
+    resources :posts do
+      resources :comments, only: :new
+      member do
+        post :upvote
+        post :downvote
+      end
+    end
+  end
   
 end
