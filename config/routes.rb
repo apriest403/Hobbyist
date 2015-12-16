@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :hobbies
+    resources :comments
     resources :posts do
       resources :comments, only: :new
       member do
