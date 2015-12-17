@@ -1,3 +1,137 @@
-<form>
-  
-</form>
+<div id="tag-input" class="form-group">
+  <input type="text" class="form-control">
+  <button id="tag-submit" class="btn btn-success">Submit</button>
+</div>
+
+<h3>Tags</h3>
+<ul id="tags">
+</ul>
+
+<div class="danger">
+</div>
+
+<style type="scss">
+  body {
+    font-family: helvetica;
+  }
+
+  input {
+    border-radius: 5px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      background-color: lightblue;
+      width: 200px;
+      padding: 10px 0;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 10px black;
+      transition-duration: 250ms;
+      margin: 5px 0;
+      &:hover {
+        background-color: cornflowerblue;
+        cursor: pointer;
+        &:after {
+          content: "    Delete?";
+        }
+      }
+    }
+  }
+
+  .danger {
+    display: none;
+    border: 1px solid red;
+    background-color: lightpink;
+    font-weight: bold;
+    color: red;
+    width: 200px;
+    border-radius: 5px;
+    padding: 10px 0;
+    text-align: center;
+    transition-duration: 500ms;
+  }
+</style>
+
+<script>
+  var tagStore = [];
+  var _set = {};
+
+  var Tag = function(name) {
+    this.name = name;
+  };
+
+  var updateTags = function () {
+    var tags = document.querySelector("#tags");
+    var newTags = "";
+    for (var i = 0; i < tagStore.length; i++) {
+      if (typeof tagStore[i] !== "undefined")
+        newTags += "<li>" + tagStore[i].name +"</li>";
+    }
+    
+    tags.innerHTML = newTags;
+  };
+
+  var deleteTag = function (name) {
+    // tagStore = tagStore.slice(0, _set[name]).concat(tagStore.slice(_set[name] + 1)).slice();
+    delete tagStore[_find(name)];
+    delete _set[name];
+  };
+
+  var _find = function (key) {
+    for (var i = 0; i < tagStore.length; i++) {
+      if (tagStore[i] === key)
+        return i; 
+    }
+    return -1;
+  };
+
+  var tags = document.querySelector("#tags");
+
+  tags.addEventListener("click", function (e) {
+    if (e.target.tagName === "LI")
+      deleteTag(e.target.innerText)
+      updateTags();
+  }, false)
+
+  var d = document.querySelector("#tag-submit");
+
+  var alert = function () {
+    var danger = document.querySelector(".danger");
+    danger.style.display = "block"
+    danger.innerText = "Tag already exists!"
+    setTimeout(function() {
+      danger.style.display = "none";
+    }, 1000)
+  }
+
+  var addTag = function () {
+    var i = document.querySelector("input");
+    var tag = new Tag(i.value);
+    if (typeof _set[i.value] === "undefined") {
+      _set[i.value] = tagStore.length;
+      tagStore.push(tag);
+      updateTags();
+    } else {
+      alert();
+      console.log("Tag already exists!");
+    }
+  }
+
+  d.addEventListener("click", function (e) {
+    addTag();
+  }, false)
+
+  var input = document.querySelector("input");
+
+  input.addEventListener("keypress", function (e) {
+    if (e.keyCode === 13)
+      addTag();
+  }, false);
+
+</script>
+
