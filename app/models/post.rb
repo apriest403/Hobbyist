@@ -23,7 +23,9 @@ class Post < ActiveRecord::Base
   belongs_to :hobby
   has_many   :comments
   has_many   :votes, as: :votable, dependent: :destroy
-
+  has_many   :taggings
+  has_many   :tags, through: :taggings, source: :tag
+  
   def comments_by_parent_id
     comment_layers = Hash.new { |h, k| h[k] = [] }
     comments.each do |comment|
