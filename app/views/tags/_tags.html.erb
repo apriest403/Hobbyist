@@ -78,13 +78,15 @@
 
   var deleteTag = function (name) {
     // tagStore = tagStore.slice(0, _set[name]).concat(tagStore.slice(_set[name] + 1)).slice();
+    console.log(name);
+    console.log(_find(name));
     delete tagStore[_find(name)];
     delete _set[name];
   };
 
   var _find = function (key) {
     for (var i = 0; i < tagStore.length; i++) {
-      if (tagStore[i] === key)
+      if (tagStore[i] && tagStore[i].name === key)
         return i; 
     }
     return -1;
@@ -94,6 +96,7 @@
 
   tags.addEventListener("click", function (e) {
     if (e.target.tagName === "LI")
+      console.log(e.target.innerText);
       deleteTag(e.target.innerText)
       updateTags();
   }, false)
