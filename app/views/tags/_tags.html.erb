@@ -85,6 +85,17 @@
     }
   };
 
+  var toArray = function () {
+    var result = [];
+    for (var tag in _set) {
+      if (_set.hasOwnProperty(tag)) {
+        result.push(tag);
+      }
+    }
+
+    return result;
+  };
+
   // Event listeners
   tags.addEventListener('click', function (e) {
     e.preventDefault();
