@@ -1,0 +1,41 @@
+.delete-tag {
+  font-weight: bold;
+  color: gray;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#tag-submit {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  .tag {
+    background-color: lightblue;
+    display: inline-block;
+    padding: 10px 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    transition-duration: 250ms;
+    margin: 5px;
+    &:hover {
+      padding: 10px 10px;
+    }
+  }
+}
+
+.danger {
+  display: none;
+  width: 200px;
+  border-radius: 5px;
+  padding: 10px 0;
+  text-align: center;
+  transition-duration: 500ms;
+}

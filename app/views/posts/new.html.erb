@@ -3,9 +3,7 @@
 	<h1>Create a Post</h1>
 	<%= form_for(@post) do |f| %>
 		<% if @hobbies.count == 0 %>
-
 			<p>You need to follow a hobby to submit a post!</p>
-
 		<% else %>
 
 			<div class="form-group">
@@ -16,22 +14,24 @@
 			<div class="form-group">
 				<!-- <label for="post_hobby">Hobby</label><br> -->
 				<%= f.label :hobby_id %><br>
-				<%= f.select(:hobby_id,@hobbies) %>
-		    </div>
+				<%= f.select(:hobby_id,@hobbies, {}, class: "form-control") %>
+	    </div>
 
-		    <div class="form-group">
+	    <div class="form-group">
 				<%= f.label :link %> <i>(optional)</i><br>
 				<%= f.text_field :link , autofocus: true, class: "form-control"%>
 			</div>
 
-		    <div class="form-group">
+	    <div class="form-group">
 				<%= f.label :content %><br>
 				<%= f.text_area :content , autofocus: true, class: "form-control"%>
 			</div>
 
+			<%= render 'tags/tags' %>
+			<br/><br/>
 			<div class="actions">
-    			<%= f.submit "Submit", class: "btn btn-default" %>
-  			</div>
+  			<%= f.submit "Submit", class: "btn btn-primary" %>
+			</div>
 
 		<% end %>
 
