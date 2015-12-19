@@ -13,22 +13,20 @@
 }
 
 .tag-list {
-  ul {
-    list-style-type: none;
-    padding: 0;
-    .tag {
-      background-color: lightblue;
-      display: inline-block;
-      padding: 10px 5px;
-      border-radius: 5px;
-      text-align: center;
-      font-weight: bold;
-      color: white;
-      transition-duration: 250ms;
-      margin: 5px;
-      &:hover {
-        padding: 10px 10px;
-      }
+  list-style-type: none;
+  padding: 0;
+  li.tag {
+    background-color: lightblue;
+    display: inline-block;
+    padding: 10px 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    transition-duration: 250ms;
+    margin: 5px;
+    &:hover {
+      padding: 10px 10px;
     }
   }
 }
