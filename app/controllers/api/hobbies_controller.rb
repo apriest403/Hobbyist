@@ -5,7 +5,7 @@ class Api::HobbiesController < ApplicationController
   end
 
   def show
-    @user = current_or_guest_user
+    @user = current_user
     @hobby = Hobby.includes(:posts, posts: :votes).find(params[:id])
     @posts = @hobby.posts.all
 

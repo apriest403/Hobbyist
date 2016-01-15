@@ -10,7 +10,7 @@ class HobbiesController < ApplicationController
   end
 
   def show
-    @user = current_or_guest_user
+    @user = current_user
     @hobby = Hobby.includes(:posts, posts: :votes).find(params[:id])
     @posts = @hobby.posts.all
   end
@@ -54,7 +54,7 @@ class HobbiesController < ApplicationController
     end
 
     def verify_admin
-      unless current_or_guest_user.admin?
+      unless current_user.admin?
         flash[:danger] = "You can't edit hobbies unless you're an admin"
         redirect_to root_path
       end
