@@ -11,4 +11,9 @@ class StaticPagesController < ApplicationController
   
   def about
   end
+
+  def fail_page
+
+    fail
+  end
 end

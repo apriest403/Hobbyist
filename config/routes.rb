@@ -28,8 +28,10 @@ Rails.application.routes.draw do
 
   get   'help'  => 'static_pages#help'
   get   'about' => 'static_pages#about'
+  get   'fail'  => 'static_pages#fail_page'
 
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
+    resource  :sessions, only: [:create, :destroy]
     resources :hobbies
     resources :comments
     resources :posts do
