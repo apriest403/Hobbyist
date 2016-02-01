@@ -22,5 +22,4 @@ class UsersController < ApplicationController
 		@users = @user.followers
 		render 'show_follow'
 	end
-
 end

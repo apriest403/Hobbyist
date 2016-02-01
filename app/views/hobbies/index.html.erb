@@ -15,7 +15,7 @@
           <% @hobbies.each do |hobby| %>
             <tr>
               <td><%= link_to hobby.name, hobby %></td>
-              <% if current_user.admin? %>
+              <% if current_user && current_user.admin? %>
               <td>
                 <%= link_to 'Edit', edit_hobby_path(hobby), class: "btn btn-primary"%>
                 <%= link_to 'Destroy', hobby, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

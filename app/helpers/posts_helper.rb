@@ -8,6 +8,6 @@ module PostsHelper
   end
 
   def owns_post?(post)
-    post.user_id == current_user.id
+    current_user && post.user_id == current_user.id
   end
 end
