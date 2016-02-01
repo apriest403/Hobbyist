@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resource  :sessions, only: [:create, :destroy]
+    get 'signed_in' => 'sessions#signed_in'
     resources :hobbies
     resources :comments
     resources :posts do

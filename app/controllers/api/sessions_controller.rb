@@ -18,4 +18,12 @@ class Api::SessionsController < ApplicationController
       render json: 'wtf', status: 422
     end
   end
+
+  def signed_in
+    if current_user
+      render json: 'You are signed in :D'
+    else
+      render json: 'You are not signed in :('
+    end
+  end
 end
