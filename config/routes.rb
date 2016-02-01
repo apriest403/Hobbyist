@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get 'signed_in' => 'sessions#signed_in'
     resources :hobbies
     resources :comments
+    resources :users
     resources :posts do
       resources :comments, only: :new
       member do
