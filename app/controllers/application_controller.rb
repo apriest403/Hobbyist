@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
-  def logging_in
-    
+  def verify_jwt_token
+    head :unauthorized if request.headers['Authorization'].nil? ||
+    !AuthToken.valid?(request.headers['Authorization'].split(' ').last)
   end
 
   def create_guest_user
