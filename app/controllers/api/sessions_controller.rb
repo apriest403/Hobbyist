@@ -1,11 +1,17 @@
+require 'json_web_token'
+
 class Api::SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     resource = User.find_for_database_authentication(
       email: params[:user][:email]
     )
+
     if resource.valid_password? params[:user][:password]
+      token = JsonWebToken.issue_token(resource)
       sign_in :user, resource
-      render json: resource
+      render json: { user: resource, token: token }
     else
       render json: ['nope'], status: 422
     end
