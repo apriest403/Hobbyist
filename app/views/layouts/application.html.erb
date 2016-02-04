@@ -15,8 +15,6 @@
 
 <%= render 'layouts/nav' %>
 
-<div id="content"></div>
-
 <div class="container">
   <% flash.each do |message_type, message| %>
     <% message_type = "danger" if message_type == "alert" %>

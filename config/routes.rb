@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'comments/show'
+  get 'test' => 'static_pages#test'
 
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :hobbies

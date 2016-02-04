@@ -16,4 +16,8 @@ class StaticPagesController < ApplicationController
 
     fail
   end
+
+  def test_
+    render :test
+  end
 end
