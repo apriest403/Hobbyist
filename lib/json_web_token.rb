@@ -1,6 +1,10 @@
 require 'jwt'
 
 class JsonWebToken
+  def self.issue_refresh_token
+    JsonWebToken.encode({ 'refresh' => 'refresh_token' })
+  end
+
   def JsonWebToken.issue_token(user)
     JsonWebToken.encode({ 'user_id' => user.id })
   end
