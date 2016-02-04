@@ -20,3 +20,5 @@
 
 # Ignore c9
 /.c9
+/node_modules
+/app/assets/javascripts
