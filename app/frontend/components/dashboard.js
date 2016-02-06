@@ -8,11 +8,10 @@ class Dashboard extends React.Component {
     return (
       <div>
         <video autoPlay className='index-video' 
-          loop id='index' poster='/assets/placeholder.png'>
+          loop id='index' poster='http://i.imgur.com/s7WlEBU.jpg'>
           <source 
             src='http://zippy.gfycat.com/JampackedClearcutArrowana.webm' 
             type='video/webm' />
-          Shit don't work
         </video>
 
         <div id='index'>
