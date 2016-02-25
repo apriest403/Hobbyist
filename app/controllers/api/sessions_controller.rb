@@ -27,9 +27,9 @@ class Api::SessionsController < ApplicationController
 
   def signed_in
     if current_user
-      render json: 'You are signed in :D'
+      render json: {signed_in: true}
     else
-      render json: 'You are not signed in :('
+      render json: {signed_in: false}
     end
   end
 end
