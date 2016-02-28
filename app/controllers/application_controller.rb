@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
+  def is_admin?
+    current_user && current_user.admin?
+  end
+
   def verify_jwt_token
     head :unauthorized if request.headers['Authorization'].nil? ||
     !JsonWebToken.valid?(request.headers['Authorization'].split(' ').last)
