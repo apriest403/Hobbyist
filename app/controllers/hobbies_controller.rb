@@ -41,10 +41,6 @@ class HobbiesController < ApplicationController
   end
 
   private
-    def is_guest
-      current_user && session[:guest_user_id] == current_user.id 
-    end
-
     def set_hobby
       @hobby = Hobby.find(params[:id])
     end

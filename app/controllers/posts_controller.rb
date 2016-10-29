@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show]
 
   def new
     @hobbies = current_user.hobbies.all.map do |hobby| 
@@ -61,14 +61,9 @@ before_action :authenticate_user!, except: [:show]
   private
   def vote(up_or_down)
     post = Post.find(params[:id])
-    voted = Vote.find_by(user_id: current_user.id,
-                         votable_id: post.id,
-                         votable_type: "Post")
+    voted = Vote.find_by(user_id: current_user.id, votable_id: post.id, votable_type: "Post")
 
-    vote = Vote.new(value: up_or_down,
-                    user_id: current_user.id,
-                    votable_type: "Post",
-                    votable_id: post.id)
+    vote = Vote.new(value: up_or_down, user_id: current_user.id, votable_type: "Post", votable_id: post.id)
     if voted
       voted.destroy
       vote.save if voted.value != up_or_down
@@ -76,10 +71,6 @@ before_action :authenticate_user!, except: [:show]
       vote.save
     end
     redirect_to post_url(post)
-  end
-
-  def guest
-
   end
 
   def post_params
