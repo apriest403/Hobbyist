@@ -98,19 +98,6 @@ ActiveRecord::Schema.define(version: 20151217061435) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "votables", force: :cascade do |t|
-    t.integer  "votable_id",   null: false
-    t.string   "votable_type", null: false
-    t.integer  "value",        null: false
-    t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "votables", ["user_id", "votable_id", "votable_type"], name: "index_votables_on_user_id_and_votable_id_and_votable_type", unique: true
-  add_index "votables", ["user_id"], name: "index_votables_on_user_id"
-  add_index "votables", ["votable_id", "votable_type"], name: "index_votables_on_votable_id_and_votable_type"
-
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id",   null: false
     t.string   "votable_type", null: false
