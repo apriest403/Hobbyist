@@ -40,11 +40,11 @@ class UserTest < ActiveSupport::TestCase
     draco = users(:draco)
     harry = users(:harry)
 
-    assert_not draco.followingUser?(harry)
-    draco.followUser(harry)
-    assert draco.followingUser?(harry)
-    draco.unfollowUser(harry)
-    assert_not draco.followingUser?(harry)
+    assert_not draco.following_user?(harry)
+    draco.follow_user(harry)
+    assert draco.following_user?(harry)
+    draco.unfollow_user(harry)
+    assert_not draco.following_user?(harry)
   end
 
 end

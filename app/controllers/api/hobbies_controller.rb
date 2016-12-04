@@ -1,4 +1,7 @@
 class Api::HobbiesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  # before_action :verify_jwt_token, only: [:create, :update, :destroy]
+
   def index
     @hobbies = Hobby.all
     render json: @hobbies
@@ -22,7 +25,9 @@ class Api::HobbiesController < ApplicationController
   end
 
   def update
-    if is_admin?
+    if !verify_jwt_token
+      render json: {}, status: 403
+    elsif is_admin?
       @hobby = Hobby.find(params[:id])
       if @hobby.update(hobby_params)
         render json: @hobby
@@ -30,11 +35,12 @@ class Api::HobbiesController < ApplicationController
         render json: @hobby.errors.full_messages, status: 422
       end
     else
-      render json: {'Things you can do' => 'not this'}, status: 422
+      render json: {}, status: 403
     end
   end
 
   def destroy
+    # render json: {}, status: 403 if !verify_jwt_token
     if is_admin?
       @hobby = Hobby.find(params[:id])
       if @hobby.destroy
@@ -43,7 +49,7 @@ class Api::HobbiesController < ApplicationController
         render json: @hobby.errors.full_messages, status: 422
       end
     else
-      render json: {'Things you can do' => 'not this'}, status: 422
+      render json: {}, status: 403
     end
   end
 
