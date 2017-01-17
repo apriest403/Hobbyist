@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   
   # Unfollows a hobby
   def unfollow(some_hobby)
-    user_hobbies.find_by(hobby_id: some_hobby.id).destroy
+    user_hobbies.find_by(user_id: id, hobby_id: some_hobby.id).destroy
   end
   
   # Returns true if user is following the hobby
